@@ -1,1 +1,42 @@
-123333
+test_example_DBN.m -------------------------------------------------------------------------------------------------------------------------------------
+
+function test_example_DBN
+
+load ../data/mnist_40000_10000;
+addpath('../DBN');
+addpath('../NN');
+addpath('../util');
+
+train_x = double(train_x) / 255;
+test_x  = double(test_x)  / 255;
+train_y = double(train_y);
+test_y  = double(test_y);
+ 
+rand('state',0)
+
+% train dbn
+dbn.sizes = [100 200]; % DBN的結構，v1層為raw pixel/原始圖片，h1/v2層的節點數為100，h2/v3層的節點數為200
+opts.numepochs =   3;
+opts.batchsize = 100;
+opts.momentum  =   0; % 記錄以前的更新方向，並與現在的方向結合下，從而加快學習的速度
+opts.alpha     =   1;
+dbn = dbnsetup(dbn, train_x, opts);
+dbn = dbntrain(dbn, train_x, opts);
+ 
+% unfold dbn to nn
+nn = dbnunfoldtonn(dbn, 10);
+nn.activation_function = 'sigm';
+ 
+% train nn
+% 得到DBN的初始化參數後，用nn進行微調
+opts.numepochs =  3;
+opts.batchsize = 100;
+nn = nntrain(nn, train_x, train_y, opts);
+[er, bad] = nntest(nn, test_x, test_y);
+ 
+assert(er < 0.10, 'Too big error');
+
+
+%% 其中的過程簡單清晰明了，就是dbnsetup(),dbntrain()以及dbnunfoldtonn()三個函數
+
+%%最後fine tuning的時候用了NN code裡看過的nntrain和nntest
