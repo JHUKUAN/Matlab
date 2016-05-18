@@ -1,0 +1,16 @@
+
+
+x=-6:0.01:2*pi
+dx=0:1:20
+ 
+for i=1:20
+    y1=sin(x+dx(i))
+    y2=cos(x+dx(i))
+    y3=tan(x+dx(i))
+
+    plot(x,y1,'-r',x,y2,'-.g',x,y3,':b')
+    axis([-6 6 -6 6])
+    legend('sin(x)','cos(x)','tan(x)')
+    title('三種三角函數的波形','fontsize',22)
+    eval(['print -djpeg -r300','''Fig',num2str(i),'.jpg''',';'])
+end
