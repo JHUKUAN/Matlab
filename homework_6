@@ -1,0 +1,24 @@
+HW_6：
+
+x=-6:0.01:2*pi
+dx=0:1:20
+ 
+for i=1:20
+    y1=sin(x+dx(i))
+    subplot(2,1,1)
+    plot(x,y1,':r')
+    axis([-6 6 -6 6])
+    legend('sin(x)',1)
+    grid on
+    title('2種三角函數的波形','fontsize',12)
+ 
+    y2=cos(x+dx(i))
+    subplot(2,1,2)
+    plot(x,y2,'-.b')
+    axis([-6 6 -6 6])
+    legend('sin(x)',2)
+    grid on
+    title('2種三角函數的波形','fontsize',22)
+
+    eval(['print -djpeg -r300','''Fig',num2str(i),'.jpg''',';'])
+end
