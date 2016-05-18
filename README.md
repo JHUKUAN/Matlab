@@ -4,7 +4,7 @@
 ### 持續製作中
 
 - outline
- - homework_1：4階層 = 4! = 4*3*2*1 = 24
+ - homework_1：4階層 = 4! = 4x3x2x1 = 24
  - homework_2：
  - homework_3：
  - homework_4：
