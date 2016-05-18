@@ -1,0 +1,17 @@
+% HW_3：
+
+t=1:10;
+y=rand(size(t));
+
+hold on
+
+for k=1:length(t)
+    text(t(k)+0.15,y(k),num2str(k));
+    text(t(k)+0.25,y(k),',');
+    text(t(k)+0.35,y(k),num2str(y(k),'%.2f'));
+end
+p=plot(t,y,t,y,'o');
+set(p,'MarkerFaceColor','r','MarkerEdgeColor','B')
+
+hold off
+
