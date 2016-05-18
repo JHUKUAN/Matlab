@@ -5,7 +5,7 @@
 
 - outline
  - homework_1：4階層 = 4! = 4x3x2x1 = 24
- - homework_2：
+ - homework_2：99 乘法
  - homework_3：
  - homework_4：
  - homework_5：
