@@ -1,10 +1,1 @@
 
-
-plot(1:10,'d-.k');
-set(gca,'ycolor',[1 0 0]);
-xlimit=get(gca,'xlim');
-ylimit=get(gca,'ylim');
-line_handle=line([xlimit(1),xlimit(1)],ylimit,...
-    'linewidth',3,'color',[1 1 0]);
-set(gcf,'ResizeFcn',['delete(line_handle),ah=axis;',...
-    'line_handle=line([ah(1),ah(1)],ah(3:4),''linewidth'',3,...''color'',[1 1 0]);'])
